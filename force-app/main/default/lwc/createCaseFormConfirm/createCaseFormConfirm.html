@@ -1,0 +1,184 @@
+<template>
+  <article class="slds-card slds-c-card-shadow" if:true={isConfirm}>
+    <div class="slds-card__header slds-grid">
+
+      <header class="slds-media slds-media_center slds-has-flexi-truncate">
+        <div class="slds-media__figure">
+          <span class="slds-icon_container slds-icon-standard-case">
+                <div class="slds-icon slds-icon_small" aria-hidden="true">
+                  <img src="https://brave-goat-gu8xdq-dev-ed.my.salesforce.com/img/icon/t4v35/standard/case_120.png" height="50" width="50" style="background-color:#F2CF5B;border-radius:20%;" alt="Case">
+                </div>
+                <span class="slds-assistive-text">ご確認画面</span>
+          </span>
+        </div>
+        <div class="slds-media__body">
+          <h2 class="slds-card__header-title">
+            <span>ご確認画面</span>
+            <lightning-helptext content="入力フォームで入力された値の確認画面"></lightning-helptext>
+          </h2>
+        </div>
+      </header>
+    </div>
+
+    <div class="slds-card__body slds-card__body_inner">
+      <div class="slds-section slds-is-open" if:true={isFromLine}>
+        <h3 class="slds-section__title slds-theme_shade">
+          <span class="slds-truncate slds-p-horizontal_small">LINE情報</span>
+        </h3>
+
+        <div class="slds-form" role="list">
+          <div class="slds-form__row slds-p-horizontal_small">
+            <div class="slds-form__item" role="listitem">
+              <div class="slds-form-element slds-form-element_readonly slds-col">
+                <span class="slds-form-element__label">LINE ID</span>
+                <div class="slds-form-element__control">
+                  <div class="slds-form-element__static">
+                    <lightning-formatted-text value={lineUserId}></lightning-formatted-text>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="slds-form__item" role="listitem">
+              <div class="slds-form-element slds-form-element_edit slds-hint-parent slds-col slds-p-horizontal_small">
+                <div class="slds-form-element__control"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slds-form__row slds-p-horizontal_small">
+            <div class="slds-form__item" role="listitem">
+              <div class="slds-form-element slds-form-element_readonly slds-hint-parent slds-col">
+                <span class="slds-form-element__label">LINE ユーザ名</span>
+                <div class="slds-form-element__control">
+                  <div class="slds-form-element__static">
+                    <lightning-formatted-text value={lineDisplayName}></lightning-formatted-text>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="slds-form__item" role="listitem">
+              <div class="slds-form-element slds-form-element_edit slds-hint-parent slds-col slds-p-horizontal_small">
+                <div class="slds-form-element__control"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slds-section slds-is-open">
+        <h3 class="slds-section__title slds-theme_shade">
+          <span class="slds-truncate slds-p-horizontal_small">お客様情報</span>
+        </h3>
+
+        <div class="slds-form" role="list">
+          <div class="slds-form__row slds-p-horizontal_small">
+            <div class="slds-form__item" role="listitem">
+              <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-hint-parent slds-col">
+                <span class="slds-form-element__label">姓</span>
+                <div class="slds-form-element__control">
+                  <div class="slds-form-element__static">
+                    <lightning-formatted-text value={inputUserLastName}></lightning-formatted-text>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="slds-form__item" role="listitem">
+              <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-hint-parent slds-col">
+                <span class="slds-form-element__label">名</span>
+                <div class="slds-form-element__control">
+                  <div class="slds-form-element__static">
+                    <lightning-formatted-text value={inputUserFirstName}></lightning-formatted-text>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slds-form__row slds-p-horizontal_small">
+            <div class="slds-form__item" role="listitem">
+              <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-hint-parent slds-col">
+                <span class="slds-form-element__label">電話番号</span>
+                <div class="slds-form-element__control">
+                  <div class="slds-form-element__static">
+                    <lightning-formatted-text value={inputUserPhone}></lightning-formatted-text>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="slds-form__item" role="listitem">
+              <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-hint-parent slds-col">
+                <span class="slds-form-element__label">メールアドレス</span>
+                <div class="slds-form-element__control">
+                  <div class="slds-form-element__static">
+                    <lightning-formatted-text value={inputUserEmail}></lightning-formatted-text>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slds-section slds-is-open">
+        <h3 class="slds-section__title slds-theme_shade">
+          <span class="slds-truncate slds-p-horizontal_small" title="お問い合わせ">お問い合わせ</span>
+        </h3>
+
+        <div class="slds-form" role="list">
+          <div class="slds-form__row slds-p-horizontal_small">
+            <div class="slds-form__item" role="listitem">
+              <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-hint-parent slds-col">
+                <span class="slds-form-element__label">問い合わせ日</span>
+                <div class="slds-form-element__control">
+                  <div class="slds-form-element__static">
+                    <lightning-formatted-text value={inputDate}></lightning-formatted-text>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="slds-form__item" role="listitem">
+              <div class="slds-form-element slds-form-element_edit slds-hint-parent slds-col slds-p-horizontal_small">
+                <div class="slds-form-element__control"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slds-form__row slds-p-horizontal_small">
+            <div class="slds-form__item" role="listitem">
+              <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-hint-parent slds-col">
+                <span class="slds-form-element__label">お問い合わせ区分</span>
+                <div class="slds-form-element__control">
+                  <div class="slds-form-element__static">
+                    <lightning-formatted-text value={inputDivision}></lightning-formatted-text>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="slds-form__item" role="listitem">
+              <div class="slds-form-element slds-form-element_edit slds-hint-parent slds-col slds-p-horizontal_small">
+                <div class="slds-form-element__control"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slds-form__row slds-p-horizontal_small">
+            <div class="slds-form__item" role="listitem">
+              <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-hint-parent slds-col">
+                <span class="slds-form-element__label">お問い合わせ内容</span>
+                <div class="slds-form-element__control">
+                  <lightning-formatted-text value={inputDetail}></lightning-formatted-text>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ３．送信 -->
+    <footer class="slds-card__footer">
+      <lightning-button variant="brand-outline" label="戻る" onclick={handleClickBack} class="slds-m-left_x-small"></lightning-button>
+      <lightning-button variant="destructive" label="送信" onclick={handleClickSend} class="slds-m-left_x-small"></lightning-button>
+    </footer>
+  </article>
+</template>

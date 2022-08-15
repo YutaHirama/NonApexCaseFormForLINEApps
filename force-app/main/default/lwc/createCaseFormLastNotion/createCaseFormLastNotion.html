@@ -1,0 +1,18 @@
+<template>
+  <div if:true={isLastNotion}>
+    <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_small"
+      aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" style="background-color:rgba(8, 7, 7, 0.6);">
+      <div class="slds-modal__container">
+        <header class="slds-modal__header">
+          <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">確認画面</h2>
+        </header>
+        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+          <div>問い合わせ頂きありがとうございました！</div>
+        </div>
+        <footer class="slds-modal__footer">
+          <lightning-button variant="brand" label="閉じる" onclick={handleClickClose} disabled={disableBtn} class="slds-m-left_x-small"></lightning-button>
+        </footer>
+      </div>
+    </section>
+  </div>
+</template>
